@@ -1,5 +1,4 @@
-#--
-# Copyright:: Copyright 2017, Chef Software Inc.
+# Copyright:: Copyright 2015-2016, Chef Software Inc.
 # License:: Apache License, Version 2.0
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,28 +12,22 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-#
 
-require "singleton"
+require "chef/json_compat"
+require "chef/mixin/versioned_api"
 
 class Chef
-  class ServerAPIVersions
-    include Singleton
+  class Cookbook
+    class ManifestV2
+      extend Chef::Mixin::VersionedAPI
 
-    def set_versions(versions)
-      @versions ||= versions
-    end
+      minimum_api_version 2
 
-    def min_server_version
-      !@versions.nil? ? Integer(@versions["min_version"]) : nil
-    end
+      def self.from_hash(hash)
+        Chef::Log.debug "processing manifest: #{hash}"
+        Mash.new hash
+      end
 
-    def max_server_version
-      !@versions.nil? ? Integer(@versions["max_version"]) : nil
-    end
-
-    def reset!
-      @versions = nil
     end
   end
 end
