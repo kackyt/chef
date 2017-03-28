@@ -205,13 +205,13 @@ GEM
       mixlib-cli (~> 1.4)
     artifactory (2.8.1)
     ast (2.3.0)
-    aws-sdk (2.8.11)
-      aws-sdk-resources (= 2.8.11)
-    aws-sdk-core (2.8.11)
+    aws-sdk (2.8.12)
+      aws-sdk-resources (= 2.8.12)
+    aws-sdk-core (2.8.12)
       aws-sigv4 (~> 1.0)
       jmespath (~> 1.0)
-    aws-sdk-resources (2.8.11)
-      aws-sdk-core (= 2.8.11)
+    aws-sdk-resources (2.8.12)
+      aws-sdk-core (= 2.8.12)
     aws-sigv4 (1.0.0)
     backports (3.6.8)
     binding_of_caller (0.7.2)
@@ -566,6 +566,7 @@ PLATFORMS
 
 DEPENDENCIES
   appbundler
+  bundler
   bundler-audit!
   chef!
   chef-config!
