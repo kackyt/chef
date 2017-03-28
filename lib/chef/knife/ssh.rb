@@ -251,7 +251,7 @@ class Chef
       # @return [Hash<Symbol, Object>]
       def session_options(host, port, user = nil)
         ssh_config = Net::SSH.configuration_for(host, true)
-        {}.tap do |opts|
+        ssh_config.tap do |opts|
           # Chef::Config[:knife][:ssh_user] is parsed in #configure_user and written to config[:ssh_user]
           opts[:user] = user || config[:ssh_user] || ssh_config[:user]
           if config[:ssh_gateway_identity]
